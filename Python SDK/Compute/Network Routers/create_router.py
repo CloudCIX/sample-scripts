@@ -14,7 +14,7 @@ from cloudcix.auth import get_admin_token
 # ================================================================= #
 token = get_admin_token()
 
-# VRF (Router) data to create
+# Router data to create
 vrf_data = {
     'project_id': 123,          # Change this to your project ID
     'type': 'router',
