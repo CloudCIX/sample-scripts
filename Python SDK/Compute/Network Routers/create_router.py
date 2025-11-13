@@ -18,8 +18,8 @@ token = get_admin_token()
 vrf_data = {
     'project_id': 123,          # Change this to your project ID
     'type': 'router',
-    'name': 'My Test Router',         # Change this to your desired VRF name
-    'networks': [                  # Private networks for this VRF
+    'name': 'My Test Router',         # Change this to your desired Router name
+    'networks': [                  # Private networks for this Router
         {
             'name': 'my-network-1',
             'ipv4': '10.0.1.0/24'
