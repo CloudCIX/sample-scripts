@@ -36,7 +36,7 @@ lxd_vm_data = {
             ],
             "ipv6_addresses": [
                 {
-                "address": "2a02:2078:10:35gb::2"
+                "address": "2a02:2078:10:35gb::2"     # Change this to your desired IP
                 }
             ]
         }
