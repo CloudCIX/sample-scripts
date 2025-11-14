@@ -4,7 +4,6 @@ import os
 from pprint import pprint
 os.environ.setdefault('CLOUDCIX_SETTINGS_MODULE', 'my_settings')
 
-from cloudcix.api.membership import Membership
 from cloudcix.api.compute import Compute
 
 # Get a util function to get a session using the credentials in your settings file
