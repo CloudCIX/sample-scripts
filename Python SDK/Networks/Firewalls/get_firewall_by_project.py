@@ -40,12 +40,27 @@ if response.status_code == 200:
             print(f"  State: {firewall_state}")
             print(f"  Created: {created}")
             
-            # Get rule count
+            # Get rule details
             detail_response = Compute.network_firewalls.read(token=token, pk=firewall_id)
             if detail_response.status_code == 200:
                 firewall_details = detail_response.json()['content']
                 rules = firewall_details.get('rules', [])
                 print(f"  Rules: {len(rules)} configured")
+                
+                if rules:
+                    for i, rule in enumerate(rules, 1):
+                        direction = 'Inbound' if rule.get('inbound') else 'Outbound'
+                        action = 'Allow' if rule.get('allow') else 'Block'
+                        protocol = rule.get('protocol', 'Any')
+                        port = rule.get('port', 'Any')
+                        source = rule.get('source', 'Any')
+                        destination = rule.get('destination', 'Any')
+                        
+                        print(f"    Rule {i}: {action} {direction} - {source} → {destination}")
+                        if protocol != 'Any' or port != 'Any':
+                            print(f"           Protocol: {protocol}, Port: {port}")
+                        if rule.get('description'):
+                            print(f"           {rule['description']}")
             
             print()
     else:
