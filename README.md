@@ -9,7 +9,7 @@ Example scripts for interacting with CloudCIX Applications.
 - Retrieve your CloudCIX Memebr API Key - Under the My Membership tab in the sidebar, click on Member Details - The API Key be available at the top of the form
 
 
-### Installating the Python SDK
+### Installing the Python SDK
 
 ```bash
 pip3 install -U "cloudcix>=5.0.0"
