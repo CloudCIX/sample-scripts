@@ -9,13 +9,13 @@ Example scripts for interacting with CloudCIX Applications.
 - Retrieve your CloudCIX Memebr API Key - Under the My Membership tab in the sidebar, click on Member Details - The API Key be available at the top of the form
 
 
-### Installation
+### Installating the Python SDK
 
 ```bash
 pip3 install -U "cloudcix>=5.0.0"
 ```
 
-### Configuration
+#### Configuration
 
 Create a `my_settings.py` file with your CloudCIX credentials:
 
@@ -29,7 +29,7 @@ CLOUDCIX_API_PASSWORD="My_Password"                   # Password for email regis
 CLOUDCIX_API_KEY="MyCl0uDC1X4P1K3Y"                   # CloudCIX Memebr API Key
 ```
 
-### Basic Script Structure
+#### Basic Script Structure
 
 ```python
 import os
@@ -45,7 +45,7 @@ token = get_admin_token()
 response = Compute.project.list(token=token)
 ```
 
-## Authentication
+#### Authentication
 
 The SDK uses token-based authentication. Always call `get_admin_token()` before making API requests:
 
