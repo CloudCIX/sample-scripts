@@ -13,42 +13,31 @@ token = get_admin_token()
 # ================================================================= #
 #                      Get Firewall Details                         #
 # ================================================================= #
-firewall_id = 123
+firewall_id = 170
 
 response = Compute.network_firewalls.read(token=token, pk=firewall_id)
 
 if response.status_code == 200:
     firewall = response.json()['content']
     
-    print(f"Firewall Details for ID: {firewall_id}")
-    print("=" * 50)
-    print(f"Name: {firewall.get('name', 'N/A')}")
-    print(f"Type: {firewall.get('type', 'N/A')}")
-    print(f"Project ID: {firewall.get('project_id', 'N/A')}")
-    print(f"State: {firewall.get('state', 'N/A')}")
-    print(f"Created: {firewall.get('created', 'N/A')}")
-    print(f"Updated: {firewall.get('updated', 'N/A')}")
+    print(f"Firewall: {firewall.get('name', 'N/A')} (ID: {firewall_id})")
+    print(f"State: {firewall.get('state', 'N/A')} | Project: {firewall.get('project_id', 'N/A')}")
     
-    print("\nRules:")
-    print("-" * 30)
     rules = firewall.get('rules', [])
     if rules:
+        print(f"\nRules ({len(rules)}):")
         for i, rule in enumerate(rules, 1):
-            print(f"Rule {i}:")
-            print(f"  Description: {rule.get('description', 'N/A')}")
-            print(f"  Allow: {rule.get('allow', 'N/A')}")
-            print(f"  Direction: {'Inbound' if rule.get('inbound') else 'Outbound'}")
-            print(f"  Protocol: {rule.get('protocol', 'N/A')}")
-            print(f"  Port: {rule.get('port', 'N/A')}")
-            print(f"  Source: {rule.get('source', 'N/A')}")
-            print(f"  Destination: {rule.get('destination', 'N/A')}")
-            print()
+            direction = 'In' if rule.get('inbound') else 'Out'
+            action = 'Allow' if rule.get('allow') else 'Block'
+            source = rule.get('source', 'Any')
+            destination = rule.get('destination', 'Any')
+            protocol = rule.get('protocol', 'Any')
+            port = rule.get('port', '')
+            
+            port_info = f":{port}" if port and port != '' else ""
+            print(f"  {i}. {direction} {action} | {source} → {destination} | {protocol}{port_info}")
     else:
-        print("  No rules configured")
-    
-    print("\nComplete JSON Response:")
-    print("-" * 50)
-    pprint(firewall)
+        print("\nRules: None")
     
 elif response.status_code == 404:
     print(f"Firewall with ID {firewall_id} not found")
