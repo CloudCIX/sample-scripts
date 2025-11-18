@@ -15,7 +15,7 @@ from cloudcix.auth import get_admin_token
 token = get_admin_token()
 
 # Configuration
-project_id = 41  # Change this to your project ID
+project_id = 123  # Change this to your project ID
 
 # ================================================================= #
 #                      List Project Instances                       #
