@@ -1,4 +1,4 @@
-# File my_project/create_geofilter.py
+# File my_project/create_firewall_geofilter.py
 
 import os
 from pprint import pprint
