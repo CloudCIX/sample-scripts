@@ -15,7 +15,7 @@ from cloudcix.auth import get_admin_token
 token = get_admin_token()
 
 # Configuration
-ip_group_id = 469              # Change this to your IP Group ID
+ip_group_id = 123              # Change this to your IP Group ID
 
 # ================================================================= #
 #                      Get IP Group Details                         #
