@@ -35,7 +35,9 @@ firewall_data = {
         }
     ]
 }
-
+```
+#### Create Geofilter
+```
 # Geo Firewall - Country-based filtering  
 geo_firewall_data = {
     'project_id': 123,
